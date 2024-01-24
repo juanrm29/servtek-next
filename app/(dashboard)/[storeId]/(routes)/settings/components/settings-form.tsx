@@ -69,8 +69,8 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
     try {
       setLoading(true);
       await axios.delete(`/api/stores/${params.storeId}`);
-      router.refresh();
       router.push('/');
+      router.refresh();
       toast.success('Service berhasil dihapus.');
     } catch (error: any) {
       toast.error('Pastikan lagi tidak ada kategori dan produk yang terhubung.');

@@ -23,6 +23,16 @@ export function MainNav({
       active: pathname === `/${params.storeId}/billboards`,
     },
     {
+      href: `/${params.storeId}/categories`,
+      label: 'Ketegori',
+      active: pathname === `/${params.storeId}/categories`,
+    },
+    {
+      href: `/${params.storeId}/tipe`,
+      label: 'Tipe',
+      active: pathname === `/${params.storeId}/tipe`,
+    },
+    {
       href: `/${params.storeId}/settings`,
       label: "Pengaturan",
       active: pathname === `/${params.storeId}/settings`,
