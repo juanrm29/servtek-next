@@ -1,8 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { AlignRight } from "lucide-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+
 
 export function MainNav({
   className,
@@ -28,9 +30,15 @@ export function MainNav({
       active: pathname === `/${params.storeId}/categories`,
     },
     {
-      href: `/${params.storeId}/tipe`,
+      
+      href: `/${params.storeId}/sizes`,
       label: 'Tipe',
-      active: pathname === `/${params.storeId}/tipe`,
+      active: pathname === `/${params.storeId}/sizes`,
+    },
+    {
+      href: `/${params.storeId}/colors`,
+      label: 'Atribut',
+      active: pathname === `/${params.storeId}/colors`,
     },
     {
       href: `/${params.storeId}/settings`,
