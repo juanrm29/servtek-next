@@ -25,6 +25,7 @@ import { Heading } from "@/components/ui/heading"
 import { AlertModal } from "@/components/modals/alert-modal"
 import { ApiAlert } from "@/components/ui/api-alert"
 import { useOrigin } from "@/hooks/use-origin"
+import Image from "next/image"
 
 const formSchema = z.object({
   name: z.string().min(2),
@@ -56,9 +57,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       setLoading(true);
       await axios.patch(`/api/stores/${params.storeId}`, data);
       router.refresh();
-      toast.success('Store updated.');
+      toast.success('Nama berhasil diubah.');
     } catch (error: any) {
-      toast.error('Something went wrong.');
+      toast.error('Terjadi kesalahan.');
     } finally {
       setLoading(false);
     }
@@ -70,9 +71,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       await axios.delete(`/api/stores/${params.storeId}`);
       router.refresh();
       router.push('/');
-      toast.success('Store deleted.');
+      toast.success('Service berhasil dihapus.');
     } catch (error: any) {
-      toast.error('Make sure you removed all products and categories first.');
+      toast.error('Pastikan lagi tidak ada kategori dan produk yang terhubung.');
     } finally {
       setLoading(false);
       setOpen(false);
@@ -88,7 +89,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       loading={loading}
     />
      <div className="flex items-center justify-between">
-        <Heading title="Store settings" description="Manage store preferences" />
+        <Heading title="Pengaturan Toko" description="Manage Preferensi Usahamu!" />
         <Button
           disabled={loading}
           variant="destructive"
@@ -101,23 +102,23 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       <Separator />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
-          <div className="grid grid-cols-3 gap-8">
+          <div className="flex grid grid-cols-3 gap-8 justify-between ">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nama</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Store name" {...field} />
+                    <Input disabled={loading} placeholder="Nama Service" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <Button disabled={loading} className="ml-auto" type="submit">
-            Save changes
+          <Button disabled={loading} className="ml-auto mt-10" type="submit">
+            Simpan Perubahan
           </Button>
         </form>
       </Form>
